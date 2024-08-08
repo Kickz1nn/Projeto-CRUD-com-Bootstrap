@@ -26,4 +26,8 @@
     if (!defined("DBAPI")) {
         define("DBAPI", ABSPATH . "inc/database.php");
     }
+
+    /** caminhos dos templates de header e footer **/
+    define('HEADER_TEMPLATE', ABSPATH . 'inc/header.php');
+    define('FOOTER_TEMPLATE', ABSPATH . 'inc/footer.php');
 ?>
