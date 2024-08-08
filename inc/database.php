@@ -8,7 +8,7 @@
             $conn->set_charset("utf8");
             return $conn;
         } catch (Exception $e) {
-            echo $e->getMessage();
+            echo "<h3> Aconteceu algum erro: " . $e->getMessage() . "</h3>";
             return null;
         }
     }
