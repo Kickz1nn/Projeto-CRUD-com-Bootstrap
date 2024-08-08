@@ -8,16 +8,15 @@
             $conn->set_charset("utf8");
             return $conn;
         } catch (Exception $e) {
-            echo "<h3> Aconteceu algum erro: " . $e->getMessage() . "</h3>";
-            return null;
+            throw $e;
         }
     }
-
+    
     function close_database($conn) {
         try {
-            mysqli_close($conn);
+            $conn = null;
         } catch (Exception $e) {
-            echo $e->getMessage();
+            echo "<h3> Aconteceu algum erro: <br>" . $e->getMessage() . "</h3>";
         }
     }
 ?>
