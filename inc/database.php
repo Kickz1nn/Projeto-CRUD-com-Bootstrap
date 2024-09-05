@@ -142,4 +142,26 @@
         
         close_database($database);
     }
+
+    function FormataData ( $data, $formato) {
+        $dt = new DateTime($data, new DateTimeZone("America/Sao_Paulo"));
+        return $dt->format($formato);
+    }
+
+    function telefone ($telefone) {
+        $tel = "(" . substr($telefone, 0, 2) . ")" . substr($telefone, 2, 5) . "-" . substr($telefone, 7, 4);
+        return $tel;
+    }
+
+    function cep ($cep) {
+        $newcep = "" . substr($cep, 0, 5) . "-" . substr($cep, 5);
+        return $newcep;
+    }
+
+    function cpf ($cpf) {
+        //490.396.938-03
+        //012 345 678 9 10
+        $newcpf = "". substr($cpf, 0, 3) . "." . substr($cpf, 3, 3) . "." . substr($cpf, 6, 3) . "-" . substr($cpf, 9);
+        return $newcpf;
+    }
 ?>

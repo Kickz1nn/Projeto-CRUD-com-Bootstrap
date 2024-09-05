@@ -31,7 +31,7 @@ CREATE TABLE `customers` (
   `birthdate` datetime NOT NULL,
   `address` varchar(255) NOT NULL,
   `hood` varchar(100) NOT NULL,
-  `zip_code` varchar(8) NOT NULL,
+  `zip_code` varchar(9) NOT NULL,
   `city` varchar(100) NOT NULL,
   `state` varchar(100) NOT NULL,
   `phone` varchar(13) NOT NULL,
@@ -45,8 +45,8 @@ CREATE TABLE `customers` (
 -- Extraindo dados da tabela `customers`
 --
 
-INSERT INTO `customers` (`id`, `name`, `cpf_cnpj`, `birthdate`, `address`, `hood`, `zip_code`, `city`, `state`, `phone`, `mobile`, `ie`, `created`, `modified`) VALUES
-(1, 'Fulano de Tal', '123.456.789-00', '1989-01-01 00:00:00', 'Rua da Web, 123', 'Internet', '12345678', 'Pilar do Sul', 'SP', '41 42241167', '15998474599', '143623456', '2016-05-24 00:00:00', '2016-05-24 00:00:00'),
+INSERT INTO `customers` (`name`, `cpf_cnpj`, `birthdate`, `address`, `hood`, `zip_code`, `city`, `state`, `phone`, `mobile`, `ie`, `created`, `modified`) VALUES
+('Fulano de Tal', '123.456.789-00', '1989-01-01 00:00:00', 'Rua da Web, 123', 'Internet', '12345678', 'Pilar do Sul', 'SP', '41 42241167', '15998474599', '143623456', '2016-05-24 00:00:00', '2016-05-24 00:00:00'),
 ('Ciclano de Tal', '123.456.789-00', '1989-01-01 00:00:00', 'Rua da Web, 124', 'Internet', '12345678', 'Pilar do Sul', 'SP', '41 42241169', '15798474599', '143823456', '2016-05-24 00:00:00', '2016-05-24 00:00:00');
 
 

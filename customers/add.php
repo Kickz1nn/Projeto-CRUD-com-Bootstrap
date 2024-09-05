@@ -13,24 +13,24 @@
     <div class="row">
         <div class="form-group col-md-7">
             <label for="name">Nome / Razão Social</label>
-            <input type="text" class="form-control" name="customer['name']">
+            <input type="text" class="form-control" name="customer['name']" required>
         </div>
 
         <div class="form-group col-md-3">
-            <label for="campo2">CNPJ / CPF</label>
-            <input type="text" class="form-control" name="customer['cpf_cnpj']">
+            <label for="campo2">CPF</label>
+            <input type="text" class="form-control" name="customer['cpf_cnpj']" minlength="10" maxlength="10">
         </div>
 
         <div class="form-group col-md-2">
             <label for="campo3">Data de Nascimento</label>
-            <input type="text" class="form-control" name="customer['birthdate']">
+            <input type="date" class="form-control" name="customer['birthdate']" required>
         </div>
     </div>
 
     <div class="row">
         <div class="form-group col-md-5">
             <label for="campo1">Endereço</label>
-            <input type="text" class="form-control" name="customer['address']">
+            <input type="text" class="form-control" name="customer['address']" >
         </div>
 
         <div class="form-group col-md-3">
@@ -40,7 +40,7 @@
 
         <div class="form-group col-md-2">
             <label for="campo3">CEP</label>
-            <input type="text" class="form-control" name="customer['zip_code']">
+            <input type="text" id="cep" class="form-control" name="customer['zip_code']" minlength="8" maxlength="8">
         </div>
 
         <div class="form-group col-md-2">
@@ -57,12 +57,12 @@
 
         <div class="form-group col-md-2">
             <label for="campo2">Telefone</label>
-            <input type="text" class="form-control" name="customer['phone']">
+            <input type="text" class="form-control" name="customer['phone']" minlength="11" maxlength="11">
         </div>
 
         <div class="form-group col-md-2">
             <label for="campo3">Celular</label>
-            <input type="text" class="form-control" name="customer['mobile']">
+            <input type="text" class="form-control" name="customer['mobile']" minlength="11" maxlength="11">
         </div>
 
         <div class="form-group col-md-1">
@@ -72,7 +72,7 @@
 
         <div class="form-group col-md-2">
             <label for="campo3">Inscrição Estadual</label>
-            <input type="text" class="form-control" name="customer['ie']">
+            <input type="text" class="form-control" name="customer['ie']" required>
         </div>
 
         <div class="form-group col-md-2">

@@ -16,15 +16,15 @@
         </div>
 
         <div class="form-group col-md-3">
-            <label for="campo2">CNPJ / CPF</label>
+            <label for="campo2">CPF</label>
             <input type="text" class="form-control" name="customer['cpf_cnpj']"
-                value="<?php echo $customer['cpf_cnpj']; ?>">
+                value="<?php echo $customer['cpf_cnpj']; ?>" minlength="10" maxlength="10">
         </div>
 
         <div class="form-group col-md-2">
             <label for="campo3">Data de Nascimento</label>
-            <input type="text" class="form-control" name="customer['birthdate']"
-                value="<?php echo $customer['birthdate']; ?>">
+            <input type="date" class="form-control" name="customer['birthdate']"
+                value="<?php echo FormataData($customer['birthdate'], "d/m/Y"); ?>">
         </div>
     </div>
     <div class="row">
@@ -41,13 +41,12 @@
 
         <div class="form-group col-md-2">
             <label for="campo3">CEP</label>
-            <input type="text" class="form-control" name="customer['zip_code']"
-                value="<?php echo $customer['zip_code']; ?>">
+            <input type="text" id="cep" class="form-control" name="customer['zip_code']" value="<?php echo $customer['zip_code']; ?>" maxlength="9">
         </div>
 
         <div class="form-group col-md-2">
             <label for="campo3">Data de Cadastro</label>
-            <input type="text" class="form-control" name="customer['created']" disabled
+            <input type="date" class="form-control" name="customer['created']" disabled
                 value="<?php echo $customer['created']; ?>">
         </div>
     </div>
@@ -59,13 +58,13 @@
 
         <div class="form-group col-md-2">
             <label for="campo2">Telefone</label>
-            <input type="text" class="form-control" name="customer['phone']" value="<?php echo $customer['phone']; ?>">
+            <input type="text" class="form-control" name="customer['phone']" value="<?php echo $customer['phone']; ?>" minlength="11" maxlength="11">
         </div>
 
         <div class="form-group col-md-2">
             <label for="campo3">Celular</label>
             <input type="text" class="form-control" name="customer['mobile']"
-                value="<?php echo $customer['mobile']; ?>">
+                value="<?php echo $customer['mobile']; ?>" minlength="11" maxlength="11">
         </div>
 
         <div class="form-group col-md-1">
