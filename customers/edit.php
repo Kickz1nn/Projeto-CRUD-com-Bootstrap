@@ -6,7 +6,7 @@
 <?php include(HEADER_TEMPLATE); ?>
 
 <h2>Atualizar Cliente</h2>
-
+<div class="container">
 <form action="edit.php?id=<?php echo $customer['id']; ?>" method="post">
     <hr />
     <div class="row">
@@ -82,12 +82,12 @@
             <input type="text" class="form-control">
         </div>
     </div>
-    <div id="actions" class="row">
+    <div id="actions" class="row mt-2">
         <div class="col-md-12">
-            <button type="submit" class="btn btn-primary">Salvar</button>
-            <a href="index.php" class="btn btn-default">Cancelar</a>
+            <button type="submit" class="btn btn-outline-success">Salvar</button>
+            <a href="index.php" class="btn btn-outline-danger">Cancelar</a>
         </div>
     </div>
 </form>
-
+</div>
 <?php include(FOOTER_TEMPLATE); ?>

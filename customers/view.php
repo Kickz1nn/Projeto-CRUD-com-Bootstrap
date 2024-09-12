@@ -56,8 +56,8 @@
 
 <div id="actions" class="row">
     <div class="col-md-12">
-        <a href="edit.php?id=<?php echo $customer['id']; ?>" class="btn btn-primary">Editar</a>
-        <a href="index.php" class="btn btn-default">Voltar</a>
+        <a href="edit.php?id=<?php echo $customer['id']; ?>" class="btn btn-dark">Editar</a>
+        <a href="index.php" class="btn btn-secondary">Voltar</a>
     </div>
 </div>
 

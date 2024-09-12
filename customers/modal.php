@@ -9,7 +9,7 @@
         Deseja realmente excluir este item?
       </div>
       <div class="modal-footer">
-        <a id="confirm" class="btn btn-primary" href="#">Sim</a>
+        <a id="confirm" class="btn btn-primary" href="delete.php?id=<?php echo $customer['id']; ?>">Sim</a>
         <a id="cancel" class="btn btn-default" data-dismiss="modal">N&atilde;o</a>
       </div>
     </div>
