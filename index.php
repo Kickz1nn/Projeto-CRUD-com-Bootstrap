@@ -7,7 +7,7 @@
         <h1>Dashboard</h1>
         <hr>
         <?php if ($db): ?>
-        <div class="row">
+        <div class="row ms-5">
             <div class="col-xs-6 col-sm-3 col-md-2">
                 <a href="customers/add.php" class="btn btn-secondary">
                     <div class="row">
