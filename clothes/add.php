@@ -5,9 +5,9 @@
 
 <?php include(HEADER_TEMPLATE); ?>
 
-<h2>Nova Roupa</h2>
+<h2 class="mt-3 ms-3">Nova Roupa</h2>
 
-<form action="add.php" method="post" enctype="multipart/form-data">
+<form action="add.php" method="post" enctype="multipart/form-data" class="ms-3 me-3">
     
     <hr/>
     <div class="row">

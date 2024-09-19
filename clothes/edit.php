@@ -5,9 +5,9 @@
 
 <?php include(HEADER_TEMPLATE); ?>
 
-<h2>Atualizar Roupa</h2>
+<h2 class="ms-3 mt-3">Atualizar Roupa</h2>
 
-<form action="edit.php?id=<?php echo isset($cloth['id']) ? $cloth['id'] : ''; ?>" method="post" enctype="multipart/form-data">
+<form action="edit.php?id=<?php echo isset($cloth['id']) ? $cloth['id'] : ''; ?>" method="post" enctype="multipart/form-data" class="ms-3 me-3">
     <hr />
     <div class="row">
         <div class="form-group col-md-7">
@@ -43,10 +43,10 @@
         </div>
     </div>
 
-    <div id="actions" class="row">
+    <div id="actions" class="row mt-3">
         <div class="col-md-12">
             <button type="submit" class="btn btn-primary">Salvar</button>
-            <a href="index.php" class="btn btn-default">Cancelar</a>
+            <a href="index.php" class="btn btn-danger">Cancelar</a>
         </div>
     </div>
 </form>

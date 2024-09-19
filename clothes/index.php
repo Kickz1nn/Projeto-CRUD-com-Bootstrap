@@ -15,7 +15,7 @@
 
         <hr>
 
-        <table class="table table-hover">
+        <table class="table table-hover ms-1">
             <thead>
                 <tr>
                     <th>ID</th>

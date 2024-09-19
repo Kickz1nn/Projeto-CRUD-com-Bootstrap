@@ -179,10 +179,22 @@
         return $newcep;
     }
 
-    function cpf ($cpf) {
-        //490.396.938-03
-        //012 345 678 9 10
-        $newcpf = "". substr($cpf, 0, 3) . "." . substr($cpf, 3, 3) . "." . substr($cpf, 6, 3) . "-" . substr($cpf, 8);
+    function cpf($cpf) {
+        // Remove qualquer caractere que não seja dígito
+        $cpf = preg_replace('/\D/', '', $cpf);
+        
+        // Verifica se o CPF tem 11 dígitos
+        if (strlen($cpf) !== 11) {
+            return "CPF inválido.";
+        }
+        
+        // Formata o CPF
+        $newcpf = substr($cpf, 0, 3) . "." . 
+                  substr($cpf, 3, 3) . "." . 
+                  substr($cpf, 6, 3) . "-" . 
+                  substr($cpf, 9, 2);
+                  
         return $newcpf;
     }
+    
 ?>
