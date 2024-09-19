@@ -19,10 +19,55 @@
             <input type="text" class="form-control" id="name" value="<?php echo $customer['name']; ?>" readonly>
         </div>
 
+<<<<<<< HEAD
         <div class="form-group col-md-6">
             <label for="cpf_cnpj">CPF / CNPJ:</label>
             <input type="text" class="form-control" id="cpf_cnpj" value="<?php echo cpf($customer['cpf_cnpj']); ?>" readonly>
         </div>
+=======
+    <dt>CPF / CNPJ:</dt>
+    <dd><?php echo cpf($customer['cpf_cnpj']); ?></dd>
+
+    <dt>Data de Nascimento:</dt>
+    <dd><?php echo FormataData($customer['birthdate'], "d/m/Y"); ?></dd>
+</dl>
+
+<dl class="dl-horizontal">
+    <dt>Endereço:</dt>
+    <dd><?php echo $customer['address']; ?></dd>
+
+    <dt>Bairro:</dt>
+    <dd><?php echo $customer['hood']; ?></dd>
+
+    <dt>CEP:</dt>
+    <dd><?php echo cep($customer['zip_code']); ?></dd>
+
+    <dt>Data de Cadastro:</dt>
+    <dd><?php echo FormataData($customer['created'], "d/m/Y"); ?></dd>
+</dl>
+
+<dl class="dl-horizontal">
+    <dt>Cidade:</dt>
+    <dd><?php echo $customer['city']; ?></dd>
+
+    <dt>Telefone:</dt>
+    <dd><?php echo telefone($customer['phone']); ?></dd>
+
+    <dt>Celular:</dt>
+    <dd><?php echo telefone($customer['mobile']); ?></dd>
+
+    <dt>UF:</dt>
+    <dd><?php echo $customer['state']; ?></dd>
+
+    <dt>Inscrição Estadual:</dt>
+    <dd><?php echo number_format($customer['ie'], 0, ",", "."); ?></dd>
+</dl>
+
+<div id="actions" class="row">
+    <div class="col-md-12">
+        <a href="edit.php?id=<?php echo $customer['id']; ?>" class="btn btn-dark">Editar</a>
+        <a href="index.php" class="btn btn-secondary">Voltar</a>
+>>>>>>> cfb03fa8797833846161b202c277be926177ea15
     </div>
 
     <div class="row">

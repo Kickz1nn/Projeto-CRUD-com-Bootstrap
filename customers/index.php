@@ -1,4 +1,4 @@
-<?php
+<button?php
     include('functions.php');
     index();
 ?>
@@ -32,8 +32,8 @@
                         <tr>
                             <td><?php echo $customer['id']; ?></td>
                             <td><?php echo $customer['name']; ?></td>
-                            <td><?php echo $customer['cpf_cnpj']; ?></td>
-                            <td><?php echo $customer['phone']; ?></td>
+                            <td><?php echo cpf($customer['cpf_cnpj']);?></td>
+                            <td><?php echo telefone($customer['phone']); ?></td>
                             <?php
                                 $data = new DateTime(
                                     $customer['modified'],
@@ -46,10 +46,15 @@
                                         class="fa fa-eye"></i> Visualizar</a>
                                 <a href="edit.php?id=<?php echo $customer['id']; ?>" class="btn btn-sm btn-warning"><i
                                         class="fa fa-pencil"></i> Editar</a>
+<<<<<<< HEAD
                                 <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal"
+=======
+                                
+                                <button href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal"
+>>>>>>> cfb03fa8797833846161b202c277be926177ea15
                                     data-customer="<?php echo $customer['id']; ?>">
                                     <i class="fa fa-trash"></i> Excluir
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
