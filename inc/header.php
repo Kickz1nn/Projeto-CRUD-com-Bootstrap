@@ -27,7 +27,7 @@
 <body>
     <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark" data-bs-theme="dark">
         <div class="container-fluid"> 
-            <a class="navbar-brand" href="<?php echo BASEURL; ?>"><i class="fa-solid fa-house"></i> Crud</a>
+            <a class="navbar-brand" href="<?php echo BASEURL; ?>"><i class="fa-solid fa-house"></i> Dashboard</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="fa-solid fa-users"></i> Clientes
+                            Clientes
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="<?php echo BASEURL; ?>customers"><i class="fa-solid fa-users"></i> Gerenciar Clientes</a></li>
@@ -46,20 +46,16 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle pd" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Tema
+                            Roupas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?php echo BASEURL; ?>customers">Gerenciar Clientes</a></li>
-                            <li><a class="dropdown-item" href="<?php echo BASEURL; ?>customers/add.php">Novo Cliente</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASEURL; ?>clothes"><i class="fa-solid fa-shirt"></i>Gerenciar Roupas</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASEURL; ?>clothes/add.php"><i class="fa-solid fa-vest"></i>Nova Roupa</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-                </form>
             </div>
             
         </div>

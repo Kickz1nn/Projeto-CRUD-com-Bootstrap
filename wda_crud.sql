@@ -49,4 +49,20 @@ INSERT INTO `customers` (`name`, `cpf_cnpj`, `birthdate`, `address`, `hood`, `zi
 ('Fulano de Tal', '123.456.789-00', '1989-01-01 00:00:00', 'Rua da Web, 123', 'Internet', '12345678', 'Pilar do Sul', 'SP', '41 42241167', '15998474599', '143623456', '2016-05-24 00:00:00', '2016-05-24 00:00:00'),
 ('Ciclano de Tal', '123.456.789-00', '1989-01-01 00:00:00', 'Rua da Web, 124', 'Internet', '12345678', 'Pilar do Sul', 'SP', '41 42241169', '15798474599', '143823456', '2016-05-24 00:00:00', '2016-05-24 00:00:00');
 
+CREATE TABLE IF NOT EXISTS `clothes` (
+    `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `descricao` varchar(50) NOT NULL,
+    `quantidade` int NOT NULL,
+    `precou` float NOT NULL,
+    `tamanho` int NOT NULL,
+    `img` varchar(30) NOT NULL,
+    `created` datetime NOT NULL,
+    `modified` datetime NOT NULL
+);
+
+INSERT INTO `clothes` (`id`, `descricao`, `quantidade`, `precou`, `tamanho`, `img`, `created`, `modified`) VALUES
+(1,'Camisa da banda norueguesa Burzum', 10, 78.99, 20, 'camisa01.jpeg', '2016-05-24 00:00:00', '2016-05-24 00:00:00'),
+(2,'Camisa da banda norueguesa Mayhem', 6, 102.90, 20, 'camisa02.jpeg', '2016-05-24 00:00:00', '2016-05-24 00:00:00'),
+(3,'Camisa da banda sueca Bathory', 3, 135.50, 20, 'camisa03.jpeg', '2016-05-24 00:00:00', '2016-05-24 00:00:00');
+
 

@@ -89,36 +89,57 @@
     }
 
     function update($table = null, $id = 0, $data = null) {
-
         $database = open_database();
         $items = null;
-        
+    
+        // Excluir o campo 'img_atual' da consulta
         foreach ($data as $key => $value) {
-            $items .= trim($key, "'") . "='$value',";
+            if ($key !== 'img_atual') { // Ignora 'img_atual'
+                $escaped_value = $database->real_escape_string($value);
+                $items .= trim($key, "'") . "='$escaped_value',";
+            }
         }
-        
-        // remove a ultima virgula
+    
+        // Remove a última vírgula
         $items = rtrim($items, ',');
-        
+    
         $sql  = "UPDATE " . $table;
         $sql .= " SET $items";
-        $sql .= " WHERE id=" . $id . ";";
-        
+        $sql .= " WHERE id=" . (int)$id . ";";
+    
+        // Debugging
+        error_log("SQL Gerado: $sql");
+        error_log("Chamando a função update com dados: " . print_r($data, true));
+    
         try {
-            $database->query($sql);
-        
+            if ($database->query($sql) === FALSE) {
+                throw new Exception("Erro na execução da consulta: " . $database->error);
+            }
+    
             $_SESSION['message'] = 'Registro atualizado com sucesso.';
             $_SESSION['type'] = 'success';
-        
-        } catch (Exception $e) { 
-        
-            $_SESSION['message'] = 'Nao foi possivel realizar a operacao.';
+        } catch (Exception $e) {
+            $_SESSION['message'] = 'Não foi possível realizar a operação.';
             $_SESSION['type'] = 'danger';
-        } 
-        
-        close_database($database);
-    }
+            error_log("Exception: " . $e->getMessage());
+        } finally {
+            close_database($database);
+            error_log("Conexão com o banco de dados fechada");
+        }
+        // Após a chamada da função update
+        if ($_SESSION['type'] === 'success') {
+            error_log("Redirecionando para index.php após atualização bem-sucedida");
+            header('Location: index.php');
+            exit();
+        } else {
+            error_log("Mensagem de erro após tentativa de atualização: " . $_SESSION['message']);
+            echo $_SESSION['message'];
+        }
 
+    }
+    
+    
+    
     function remove( $table = null, $id = null ) {
 
         $database = open_database();

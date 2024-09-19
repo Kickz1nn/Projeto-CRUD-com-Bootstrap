@@ -20,7 +20,6 @@
                     </div>
                 </a>
             </div>
-
             <div class="col-xs-6 col-sm-3 col-md-2">
                 <a href="customers" class="btn btn-light">
                     <div class="row">
@@ -29,6 +28,31 @@
                         </div>
                         <div class="col-xs-12 text-center">
                             <p>Clientes</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-2">
+                <a href="clothes/add.php" class="btn btn-secondary">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                        <i class="fa-solid fa-shirt fa-5x"></i>
+                        </div>
+                        <div class="col-xs-12 text-center">
+                           <p>Nova Roupa</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-2">
+                <a href="clothes" class="btn btn-light">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                        <i class="fa-solid fa-vest fa-5x"></i>
+                        </div>
+                        <div class="col-xs-12 text-center">
+                            <p>Roupas</p>
                         </div>
                     </div>
                 </a>

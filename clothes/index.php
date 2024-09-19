@@ -19,35 +19,35 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th width="30%">Nome</th>
-                    <th>CPF/CNPJ</th>
-                    <th>Telefone</th>
+                    <th width="30%">Descrição</th>
+                    <th>Preço</th>
+                    <th>Imagem</th>
                     <th>Atualizado em</th>
                     <th>Opções</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if ($customers): ?>
-                    <?php foreach ($customers as $customer): ?>
+                <?php if ($clothes): ?>
+                    <?php foreach ($clothes as $cloth): ?>
                         <tr>
-                            <td><?php echo $customer['id']; ?></td>
-                            <td><?php echo $customer['name']; ?></td>
-                            <td><?php echo $customer['cpf_cnpj']; ?></td>
-                            <td><?php echo $customer['phone']; ?></td>
+                            <td><?php echo $cloth['id']; ?></td>
+                            <td><?php echo $cloth['descricao']; ?></td>
+                            <td><?php echo $cloth['precou']; ?></td>
+                            <td><?php echo $cloth['img']; ?></td>
                             <?php
                                 $data = new DateTime(
-                                    $customer['modified'],
+                                    $cloth['modified'],
                                     new DateTimeZone("America/Sao_Paulo")
                                 )
                             ?>
                             <td><?php echo $data -> format("d/m/Y - H:i:s") ?></td>
                             <td class="actions text-right">
-                                <a href="view.php?id=<?php echo $customer['id']; ?>" class="btn btn-sm btn-success"><i
+                                <a href="view.php?id=<?php echo $cloth['id']; ?>" class="btn btn-sm btn-success"><i
                                         class="fa fa-eye"></i> Visualizar</a>
-                                <a href="edit.php?id=<?php echo $customer['id']; ?>" class="btn btn-sm btn-warning"><i
+                                <a href="edit.php?id=<?php echo $cloth['id']; ?>" class="btn btn-sm btn-warning"><i
                                         class="fa fa-pencil"></i> Editar</a>
                                 <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal"
-                                    data-customer="<?php echo $customer['id']; ?>">
+                                    data-cloth="<?php echo $cloth['id']; ?>">
                                     <i class="fa fa-trash"></i> Excluir
                                 </a>
                             </td>
@@ -64,5 +64,6 @@
         <?php include('modal.php'); ?>
 
         <?php include(FOOTER_TEMPLATE); ?>
-        <script src="../js/DelC.js"></script>
+
+        <script src="../js/DelR.js"></script>
 </html>
