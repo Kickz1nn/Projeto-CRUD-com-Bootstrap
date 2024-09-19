@@ -45,7 +45,6 @@
                             <li><a class="dropdown-item" href="<?php echo BASEURL; ?>customers/add.php"><i class="fa-solid fa-user-plus"></i> Novo Cliente</a></li>
                         </ul>
                     </li>
-<<<<<<< HEAD
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle pd" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -56,8 +55,6 @@
                             <li><a class="dropdown-item" href="<?php echo BASEURL; ?>clothes/add.php"><i class="fa-solid fa-vest"></i>Nova Roupa</a></li>
                         </ul>
                     </li>
-=======
->>>>>>> cfb03fa8797833846161b202c277be926177ea15
                 </ul>
             </div>
             
