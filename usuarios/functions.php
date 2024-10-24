@@ -16,10 +16,8 @@ function index()
         $usuarios = find_all("usuarios");
     }
 }
-
 // Criptografia
-function criptografia($senha)
-{
+function criptografia($senha) {
     // Aplicando criptografia na senha
     $custo = "08";
     $salt = "CflfllePArK1BJomM0F6aJ";

@@ -141,7 +141,6 @@
     
     
     function remove( $table = null, $id = null ) {
-
         $database = open_database();
             
         try {
@@ -221,5 +220,18 @@
         close_database($database);
         return $found;
     }
+
+    function clear_messages() {
+        $_SESSION["message"] = null;
+        $_SESSION["type"] = null;
+    }
     
+    function criptografia($senha) {
+        // Aplicando criptografia na senha
+        $custo = "08";
+        $salt = "CflfllePArK1BJomM0F6aJ";
+        // Gera um hash baseado em bcrypt
+        $hash = crypt($senha, "$2a$" . $custo . "$" . $salt . "$");
+        return $hash; // retorna a senha criptografada
+    }
 ?>

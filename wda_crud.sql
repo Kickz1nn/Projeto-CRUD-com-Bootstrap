@@ -69,11 +69,11 @@ CREATE TABLE usuarios(
     id int AUTO_INCREMENT not null PRIMARY KEY,
     nome varchar(50) not null,
     user varchar(50) not null,
-    password varchar(100) not null,
+    pass varchar(100) not null,
     foto varchar(50)
 );
 
-INSERT INTO `usuarios`(`nome`, `user`, `password`) 
+INSERT INTO `usuarios`(`nome`, `user`, `pass`) 
 VALUES ('Zé Lele','zelele','5243897562837456982'),
 ('Mary Zica','mazi','786098767869'),
 ('Fugiru Nakombi','fugina','623485634753234');

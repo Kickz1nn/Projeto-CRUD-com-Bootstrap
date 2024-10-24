@@ -61,7 +61,7 @@ index();
                     <td>
                         <a href="view.php?id=<?php echo $usuario['id']; ?>" class="btn btn-sm btn-light"><i class="fa fa-eye"></i> Visualizar</a>
                         <a href="edit.php?id=<?php echo $usuario['id']; ?>" class="btn btn-sm btn-secondary"><i class="fa fa-edit"></i> Editar</a>
-                        <a href="#" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#delete-user-modal" data-usuario="<?php echo $usuario['id']; ?>">
+                        <a href="#" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#delete-modal" data-usuario="<?php echo $usuario['id']; ?>">
                             <i class="fa-solid fa-trash-can"></i> Excluir
                         </a>
                     </td>
