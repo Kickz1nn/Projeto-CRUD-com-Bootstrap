@@ -65,4 +65,17 @@ INSERT INTO `clothes` (`id`, `descricao`, `quantidade`, `precou`, `tamanho`, `im
 (2,'Camisa da banda norueguesa Mayhem', 6, 102.90, 20, 'camisa02.jpeg', '2016-05-24 00:00:00', '2016-05-24 00:00:00'),
 (3,'Camisa da banda sueca Bathory', 3, 135.50, 20, 'camisa03.jpeg', '2016-05-24 00:00:00', '2016-05-24 00:00:00');
 
+CREATE TABLE usuarios(
+    id int AUTO_INCREMENT not null PRIMARY KEY,
+    nome varchar(50) not null,
+    user varchar(50) not null,
+    password varchar(100) not null,
+    foto varchar(50)
+);
 
+INSERT INTO `usuarios`(`nome`, `user`, `password`) 
+VALUES ('Zé Lele','zelele','5243897562837456982'),
+('Mary Zica','mazi','786098767869'),
+('Fugiru Nakombi','fugina','623485634753234');
+
+COMMIT;
