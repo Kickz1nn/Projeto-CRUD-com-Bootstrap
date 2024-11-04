@@ -6,17 +6,11 @@ include(DBAPI);
 $clothes = null;
 $cloth = null;
 
-/**
- * Função para listar todos os itens de roupas
- */
 function index() {
     global $clothes;
     $clothes = find_all('clothes');
 }
 
-/**
- * Função para adicionar uma nova peça de roupa
- */
 function add() {
     if (isset($_POST['clothes'])) {
         $today = date_create('now', new DateTimeZone('America/Sao_Paulo'));
@@ -78,10 +72,6 @@ function add() {
     }
 }
 
-
-/**
- * Função para editar uma peça de roupa existente
- */
 function edit() {
     global $cloth;
     
@@ -115,7 +105,6 @@ function edit() {
                     echo "O arquivo é muito grande.";
                     $uploadOk = 0;
                 }
-
                 // Permite apenas certos formatos de arquivo
                 if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
                     echo "Apenas arquivos JPG, JPEG, PNG são permitidos.";
@@ -163,17 +152,11 @@ function edit() {
     }
 }
 
-/**
- * Função para visualizar os detalhes de uma peça de roupa
- */
 function view($id = null) {
     global $cloth;
     $cloth = find('clothes', $id);
 }
 
-/**
- * Função para deletar uma peça de roupa
- */
 function delete($id = null) {
     if ($id) {
         global $cloth;
