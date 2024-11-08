@@ -1,123 +1,122 @@
 <?php
-// Esse é o functions.php
-require_once('../config.php');
-require_once(DBAPI);
 
-$usuario = null;
+include('../config.php');
+include(DBAPI);
+
 $usuarios = null;
+$usuario = null;
 
-// Listagem de Usuários
+/**
+ * Listagem de Usuários
+ */
 function index()
 {
-    global $usuarios;
-    if (!empty($_POST['users'])) {
-        $usuarios = filter("usuarios", "nome like '" . $_POST['users'] . "%'");
-    } else {
-        $usuarios = find_all("usuarios");
-    }
-}
-// Criptografia
-function criptografia($senha) {
-    // Aplicando criptografia na senha
-    $custo = "08";
-    $salt = "CflfllePArK1BJomM0F6aJ";
-    // Gera um hash baseado em bcrypt
-    $hash = crypt($senha, "$2a$" . $custo . "$" . $salt . "$");
-    return $hash; // retorna a senha criptografada
-}
-
-// Upload de imagens
-function upload($pasta_destino, $arquivo_destino, $tipo_arquivo, $nome_temp, $tamanho_arquivo)
-{
-    // Upload da foto
-    try {
-        $nomearquivo = basename($arquivo_destino);
-        $uploadOk = 1;
-
-        // Verificando se o arquivo é uma imagem
-        if (isset($_POST["submit"])) {
-            $check = getimagesize($nome_temp);
-            if ($check !== false) {
-                $_SESSION['message'] = "File is an image";
-                $_SESSION['type'] = "info";
-                $uploadOk = 1;
-            } else {
-                throw new Exception("O arquivo não é uma imagem!");
-            }
-        }
-
-        // Verificando se o arquivo já existe na pasta
-        if (file_exists($arquivo_destino)) {
-            $uploadOk = 0;
-            throw new Exception("Desculpe, o arquivo já existe!");
-        }
-
-        // Verificando se o tamanho do arquivo
-        if ($tamanho_arquivo > 5000000) {
-            $uploadOk = 0;
-            throw new Exception("Desculpe, mas o arquivo é muito grande!");
-        }
-
-        // Permitir certos formatos de arquivo
-        if ($tipo_arquivo != "jpg" && $tipo_arquivo != "png" && $tipo_arquivo != "jpeg" && $tipo_arquivo != "gif") {
-            $uploadOk = 0;
-            throw new Exception("Desculpe, mas só são permitidos arquivos de imagem JPG, JPEG, PNG e GIF!");
-        }
-
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            throw new Exception("Desculpe, mas o arquivo não pode ser enviado.");
-        } else {
-            // Se tudo estiver OK, tentamos fazer o upload do arquivo
-            if (move_uploaded_file($_FILES["foto"]["tmp_name"], $arquivo_destino)) {
-                $_SESSION['message'] = "O arquivo " . htmlspecialchars($nomearquivo) . " foi armazenado.";
-                $_SESSION['type'] = "success";
-            } else {
-                throw new Exception("Desculpe, mas o arquivo não pode ser enviado.");
-            }
-        }
-    } catch (Exception $e) {
-        $_SESSION['message'] = "Aconteceu um erro: " . $e->getMessage();
-        $_SESSION['type'] = "danger";
-    }
+	global $usuarios;
+	if (!empty($_POST['users'])) {
+		$usuarios = filter("usuarios", "nome like '%" . $_POST['users'] . "%'");
+	} else {
+		$usuarios = find_all("usuarios");
+	}
 }
 
 /**
- * Cadastro de Usuários
+ *  Upload de imagens
  */
-function add(){
-    if (!empty($_POST['usuario'])) {
-        try {
-            $usuario = $_POST['usuario'];
-            if (!empty($_FILES["foto"]["name"])) {
-                // Upload da foto
-                $pasta_destino = "fotos/"; // pasta onde ficam as fotos
-                $arquivo_destino = $pasta_destino . basename($_FILES["foto"]["name"]); // Caminho completo até o arquivo que será gravado
-                $nomearquivo = basename($_FILES["foto"]["name"]); // nome do arquivo
-                $resolucao_arquivo = getimagesize($_FILES["foto"]["tmp_name"]);
-                $tamanho_arquivo = $_FILES["foto"]["size"]; // tamanho do arquivo em bytes
-                $nome_temp = $_FILES["foto"]["tmp_name"]; // nome e caminho do arquivo no servidor
-                $tipo_arquivo = strtolower(pathinfo($arquivo_destino, PATHINFO_EXTENSION)); // extensão do arquivo
+function upload($pasta_destino, $arquivo_destino, $tipo_arquivo, $nome_temp, $tamanho_arquivo)
+{
+	try {
+		$nomearquivo = basename($arquivo_destino);
+		$uploadOk = 1;
+		if (!isset($_POST['submit'])) {
+			$check = getimagesize($nome_temp);
+			if ($check !== false) {
+				$_SESSION['message'] = "File is an image - " . $check['mime'] . ".";
+				$_SESSION['type'] = "info";
+				$uploadOk = 1;
+			} else {
+				$uploadOk = 0;
+				throw new Exception("O arquivo não é uma imagem!");
+			}
+		}
 
-                // Chamada da função upload para gravar a imagem
-                upload($pasta_destino, $arquivo_destino, $tipo_arquivo, $nome_temp, $tamanho_arquivo);
-                $usuario['foto'] = $nomearquivo;
+		if (file_exists($arquivo_destino)) {
+			$uploadOk = 0;
+			throw new Exception("Desculpe, o arquivo já existe!");
+		}
 
-                // Criptografando a senha
-                if (!empty($usuario['password'])) {
-                    $senha = criptografia($usuario['password']);
-                    $usuario['password'] = $senha;
-                }
+		if ($tamanho_arquivo > 5000000) {
+			$uploadOk = 0;
+			throw new Exception("Desculpe, mas o arquivo é muito grande!");
+		}
 
-                $usuario['foto'] = $nomearquivo;
-                save('usuarios', $usuario);
-                header('Location: index.php');
-            }
-        } catch (Exception $e) {
-            $_SESSION['message'] = "Aconteceu um erro: " . $e->getMessage();
-            $_SESSION['type'] = "danger";
-        }
-    }
+		if ($tipo_arquivo != "jpg" && $tipo_arquivo != "png" && $tipo_arquivo != "jpeg" && $tipo_arquivo != "gif") {
+			$uploadOk = 0;
+			throw new Exception("Desculpe, mas nó são permitidos arquivos de imagem JPG, JPEG, PNG E GIF!");
+		}
+
+		if ($uploadOk == 0) {
+			throw new Exception("Desculpe, mas o arquivo não pode ser enviado.");
+		} else {
+			if (move_uploaded_file($_FILES['foto']['tmp_name'], $arquivo_destino)) {
+				$_SESSION['message'] = "O arquivo " . htmlspecialchars($nomearquivo) . "foi armazenado.";
+				$_SESSION['type'] = "success";
+			} else {
+				throw new Exception("Desculpe, mas o aarquivo não pode ser enviado.");
+			}
+		}
+	} catch (Exception $e) {
+		$_SESSION['message'] = "Aconteceu um erro: " . $e->getMessage();
+		$_SESSION['type'] = "danger";
+	}
+}
+
+/**
+ * Cadastro Usuários
+ */
+function add()
+{
+	if (!empty($_POST['usuario'])) {
+		try {
+			$usuario = $_POST['usuario'];
+
+			// Verificar se o usuário enviou uma foto
+			if (!empty($_FILES["foto"]["name"])) {
+				// Configurações de upload da foto
+				$pasta_destino = "fotos/";
+				$tipo_arquivo = strtolower(pathinfo(basename($_FILES["foto"]["name"]), PATHINFO_EXTENSION));
+				$nomearquivo = uniqid() . "." . $tipo_arquivo;  // Gerar um nome único para a imagem
+				$arquivo_destino = $pasta_destino . $nomearquivo;
+				$tamanho_arquivo = $_FILES["foto"]["size"]; // Tamanho do arquivo
+				$nome_temp = $_FILES["foto"]["tmp_name"];   // Nome temporário do arquivo no servidor
+
+				// Função de upload para mover a imagem para a pasta destino
+				upload($pasta_destino, $arquivo_destino, $tipo_arquivo, $nome_temp, $tamanho_arquivo);
+
+				// Atribui o nome do arquivo ao campo 'foto' do usuário
+				$usuario['foto'] = $nomearquivo;
+			} else {
+				// Caso não tenha foto, atribui uma imagem padrão
+				$usuario['foto'] = 'semimagem.jpg';
+			}
+
+			// Criptografar a senha se ela for informada
+			if (!empty($usuario['password'])) {
+				$senha = criptografia($usuario['password']);
+				$usuario['password'] = $senha;
+			}
+
+			// Salva o usuário no banco de dados
+			save('usuarios', $usuario);
+
+			// Redireciona para a página inicial após o cadastro
+			header('Location: index.php');
+			exit();  // Garantir que o script pare de ser executado após o redirecionamento
+		} catch (Exception $e) {
+			// Mensagem de erro
+			$_SESSION['message'] = 'Aconteceu um erro: ' . $e->getMessage();
+			$_SESSION['type'] = 'danger';
+		}
+	}
 }
 
 /**
@@ -125,63 +124,100 @@ function add(){
  */
 function edit()
 {
-    try {
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            if (isset($_POST['usuario'])) {
-                $usuario = $_POST['usuario'];
+	try {
+		if (isset($_GET['id'])) {
 
-                // Criptografando a senha
-                if (!empty($usuario['password'])) {
-                    $senha = criptografia($usuario['password']);
-                    $usuario['password'] = $senha;
-                }
+			$id = $_GET['id'];
 
-                if (!empty($_FILES["foto"]["name"])) {
-                    // Upload da foto
-                    $pasta_destino = "fotos/"; // pasta onde ficam as fotos
-                    $arquivo_destino = $pasta_destino . basename($_FILES["foto"]["name"]); // Caminho completo até o arquivo que será gravado
-                    $nomearquivo = basename($_FILES["foto"]["name"]); // nome do arquivo
-                    $resolucao_arquivo = getimagesize($_FILES["foto"]["tmp_name"]);
-                    $tamanho_arquivo = $_FILES["foto"]["size"]; // tamanho do arquivo em bytes
-                    $nome_temp = $_FILES["foto"]["tmp_name"]; // nome e caminho do arquivo no servidor
-                    $tipo_arquivo = strtolower(pathinfo($arquivo_destino, PATHINFO_EXTENSION)); // extensão do arquivo
+			if (isset($_POST['usuario'])) {
+				$usuario = $_POST['usuario'];
 
-                    upload($pasta_destino, $arquivo_destino, $tipo_arquivo, $nome_temp, $tamanho_arquivo);
-                    $usuario['foto'] = $nomearquivo;
-                }
+				//criptografando a senha
+				if (!empty($usuario['password'])) {
+					$senha = criptografia($usuario['password']);
+					$usuario['password'] = $senha;
+				}
 
-                update('usuarios', $id, $usuario);
-                header('Location: index.php');
-            } else {
-                global $usuario;
-                $usuario = find("usuarios", $id);
-            }
-        } else {
-            header("Location: index.php");
-        }
-    } catch (Exception $e) {
-        $_SESSION['message'] = "Aconteceu um erro: " . $e->getMessage();
-        $_SESSION['type'] = "danger";
-    }
+				if (!empty($_FILES['foto']['name'])) {
+					//Upload da foto
+					$pasta_destino = "fotos/";
+					$arquivo_destino = $pasta_destino . basename($_FILES['foto']['name']);
+					$nomearquivo = basename($_FILES['foto']['name']);
+					$resolução_arquivo = getimagesize($_FILES['foto']['tmp_name']);
+					$tamanho_arquivo = $_FILES['foto']['size'];
+					$nome_temp = $_FILES['foto']['tmp_name'];
+					$tipo_arquivo = strtolower(pathinfo($arquivo_destino, PATHINFO_EXTENSION));
+
+					upload($pasta_destino, $arquivo_destino, $tipo_arquivo, $nome_temp, $tamanho_arquivo);
+
+					$usuario['foto'] = $nomearquivo;
+				}
+
+				update('usuarios', $id, $usuario);
+				header('Location: index.php');
+			} else {
+				global $usuario;
+				$usuario = find("usuarios", $id);
+			}
+		} else {
+			header("Location: index.php");
+		}
+	} catch (Exception $e) {
+		$_SESSION['message'] = "Aconteceu um erro: " . $e->getMessage();
+		$_SESSION['type'] = "danger";
+	}
 }
 
 /**
- * Visualização de um Usuário
+ * Visualização de um Usuário 
  */
 function view($id = null)
 {
-    global $usuario;
-    $usuario = find("usuarios", $id);
+	global $usuario;
+	$usuario = find("usuarios", $id);
 }
 
 /**
- * Exclusão de um Usuário
+ * Exclusão de um Usuario
  */
 function delete($id = null)
 {
-    global $usuarios;
-    $usuarios = remove("usuarios", $id);
-    header("Location: index.php");
+	try {
+		if (!empty($id)) {
+			// Buscar o usuário antes de deletar para remover a foto se existir
+			$usuario = find("usuarios", $id);
+
+			// Verifica se o usuário existe
+			if ($usuario) {
+				// Se o usuário tiver uma foto (diferente da imagem padrão), ela será deletada
+				if (isset($usuario['foto']) && $usuario['foto'] != 'semimagem.jpg') {
+					$arquivo_foto = "fotos/" . $usuario['foto'];
+
+					// Verifica se o arquivo existe no servidor antes de tentar deletar
+					if (file_exists($arquivo_foto)) {
+						unlink($arquivo_foto);  // Deleta a foto do servidor
+					}
+				}
+
+				// Remover o usuário do banco de dados
+				remove("usuarios", $id);
+
+				// Mensagem de sucesso
+				$_SESSION['message'] = "Usuário deletado com sucesso.";
+				$_SESSION['type'] = "success";
+			} else {
+				throw new Exception("Usuário não encontrado.");
+			}
+		} else {
+			throw new Exception("ID inválido.");
+		}
+	} catch (Exception $e) {
+		// Mensagem de erro
+		$_SESSION['message'] = "Erro ao deletar o usuário: " . $e->getMessage();
+		$_SESSION['type'] = "danger";
+	}
+
+	// Redirecionar para a página inicial
+	header("Location: index.php");
+	exit();
 }
-?>
