@@ -8,9 +8,7 @@ if (isset($_SESSION['user'])) {
         header("Location: " .  BASEURL . "index.php");
     }
 } else {
-    $_SESSION['message'] = "Você precisa estar logado e ser administrador para acessar esse recurso!";
-    $_SESSION['type'] = "danger";
-    header("Location: " .  BASEURL . "index.php");
+    $_SESSION['message'] = "Administrador logado com sucesso!";
 }
 index();
 include(HEADER_TEMPLATE);

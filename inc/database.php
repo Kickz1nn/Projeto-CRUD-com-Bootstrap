@@ -72,7 +72,7 @@
         $values = rtrim($values, ',');
         
         $sql = "INSERT INTO " . $table . "($columns)" . " VALUES " . "($values);";
-    
+        var_dump(value: $sql);
         try {
             $database->query($sql);
         
@@ -80,8 +80,7 @@
             $_SESSION['type'] = 'success';
         
         } catch (Exception $e) { 
-        
-            $_SESSION['message'] = 'Nao foi possivel realizar a operacao.';
+            $_SESSION['message'] = 'Nao foi possivel realizar a operacao: ' . $e->getMessage();
             $_SESSION['type'] = 'danger';
         } 
     

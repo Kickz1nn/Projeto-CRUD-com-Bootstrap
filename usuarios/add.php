@@ -8,9 +8,7 @@ if (isset($_SESSION['user'])) {
         header("Location: " .  BASEURL . "index.php");
     }
 } else {
-    $_SESSION['message'] = "Você precisa estar logado e ser administrador para acessar esse recurso!";
-    $_SESSION['type'] = "danger";
-    header("Location: " .  BASEURL . "index.php");
+    $_SESSION['message'] = "Administrador Logado com sucesso";
 }
 add();
 include(HEADER_TEMPLATE);
@@ -39,7 +37,7 @@ include(HEADER_TEMPLATE);
 
         <div class="form-group col-md-4">
             <label for="senha">Senha</label>
-            <input type="password" class="form-control" id="senha" name="usuario[password]" required>
+            <input type="password" class="form-control" id="senha" name="usuario[pass]" required>
         </div>
 
     </div>

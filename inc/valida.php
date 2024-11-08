@@ -25,7 +25,7 @@ try {
     $senha = criptografia($_POST['senha']);
 
     // Usar prepared statements para evitar SQL Injection
-    $stmt = $bd->prepare("SELECT id, nome, user, password FROM usuarios WHERE user = ? AND password = ? LIMIT 1");
+    $stmt = $bd->prepare("SELECT id, nome, user, pass FROM usuarios WHERE user = ? AND pass = ? LIMIT 1");
     $stmt->bind_param('ss', $usuario, $senha);
     $stmt->execute();
     $resultado = $stmt->get_result();

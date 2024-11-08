@@ -100,9 +100,9 @@ function add()
 			}
 
 			// Criptografar a senha se ela for informada
-			if (!empty($usuario['password'])) {
-				$senha = criptografia($usuario['password']);
-				$usuario['password'] = $senha;
+			if (!empty($usuario['pass'])) {
+				$senha = criptografia($usuario['pass']);
+				$usuario['pass'] = $senha;
 			}
 
 			// Salva o usuário no banco de dados
@@ -133,9 +133,9 @@ function edit()
 				$usuario = $_POST['usuario'];
 
 				//criptografando a senha
-				if (!empty($usuario['password'])) {
-					$senha = criptografia($usuario['password']);
-					$usuario['password'] = $senha;
+				if (!empty($usuario['pass'])) {
+					$senha = criptografia($usuario['pass']);
+					$usuario['pass'] = $senha;
 				}
 
 				if (!empty($_FILES['foto']['name'])) {
