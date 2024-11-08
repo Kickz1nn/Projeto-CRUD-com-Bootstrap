@@ -56,30 +56,34 @@
                     </div>
                 </a>
             </div>
-            <div class="col-xs-6 col-sm-3 col-md-2">
-                <a href="usuarios/add.php" class="btn btn-secondary">
-                    <div class="row">
-                        <div class="col-xs-12 text-center">
-                        <i class="fa-solid fa-user fa-5x"></i>
-                        </div>
-                        <div class="col-xs-12 text-center">
-                           <p>Novos Usuários</p>
-                        </div>
+            <?php if (isset($_SESSION['user'])) :?>
+                <?php if ($_SESSION['user'] == "admin") : ?>
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <a href="usuarios/add.php" class="btn btn-secondary">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                <i class="fa-solid fa-user fa-5x"></i>
+                                </div>
+                                <div class="col-xs-12 text-center">
+                                <p>Novos Usuários</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-md-2">
-                <a href="usuarios" class="btn btn-light">
-                    <div class="row">
-                        <div class="col-xs-12 text-center">
-                        <i class="fa-solid fa-users fa-5x"></i>
-                        </div>
-                        <div class="col-xs-12 text-center">
-                            <p>Usuários</p>
-                        </div>
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <a href="usuarios" class="btn btn-light">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                <i class="fa-solid fa-users fa-5x"></i>
+                                </div>
+                                <div class="col-xs-12 text-center">
+                                    <p>Usuários</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
+                <?php endif;?>
+            <?php endif;?>
         </div>
 
         <?php else: ?>
