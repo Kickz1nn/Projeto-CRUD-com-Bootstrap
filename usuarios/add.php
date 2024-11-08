@@ -1,14 +1,5 @@
 <?php
 include("functions.php");
-if (isset($_SESSION['user'])) {
-    if ($_SESSION['user'] == "admin") {
-        $_SESSION['message'] = "Logado como administrador!";
-    }
-} else {
-    $_SESSION['message'] = "Você precisa ser administrador para acessar esse recurso!";
-    $_SESSION['type'] = "danger";
-    header("Location: " .  BASEURL . "index.php");
-}
 add();
 include(HEADER_TEMPLATE);
 ?>
