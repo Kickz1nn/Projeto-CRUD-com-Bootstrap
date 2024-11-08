@@ -1,6 +1,5 @@
 <?php
 include("functions.php");
-if (!isset($_SESSION)) session_start();
 if (isset($_SESSION['user'])) {
     if ($_SESSION['user'] != "admin") {
         $_SESSION['message'] = "Você precisa ser administrador para acessar esse recurso!";

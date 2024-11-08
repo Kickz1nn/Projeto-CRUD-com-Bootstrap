@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -73,9 +76,10 @@
                         </li>
                     <?php endif; ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo BASEURL; ?>inc/logout.php">
-                            Bem vindo <?php echo $_SESSION['user']; ?> <i class="fa-solid fa-person-walking-arrow-right"></i> Desconectar
-                        </a>
+                        <p class="nav-link">Bem vindo <?php echo $_SESSION['user']; ?></p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo BASEURL?>inc/logout.php">Desconectar-se <i class="fa-solid fa-person-walking-arrow-right"></i></a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">

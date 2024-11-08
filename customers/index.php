@@ -47,7 +47,7 @@
                                 <a href="edit.php?id=<?php echo $customer['id']; ?>" class="btn btn-sm btn-warning"><i
                                         class="fa fa-pencil"></i> Editar</a>
                                 <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal"
-                                    data-customer="<?php echo $customer['id']; ?>">
+                                    data-customer="<?php echo $customer['id']; ?>" data-type="cliente">
                                     <i class="fa fa-trash"></i> Excluir
                                 </>
                             </td>

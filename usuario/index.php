@@ -1,6 +1,5 @@
 <?php
 include("functions.php");
-if (!isset($_SESSION)) session_start();
 if (isset($_SESSION['user'])) {
     if ($_SESSION['user'] != "admin") {
         $_SESSION['message'] = "Você precisa ser administrador para acessar esse recurso!";
@@ -70,7 +69,7 @@ include(HEADER_TEMPLATE);
                             <?php if (isset($_SESSION['user'])) : ?>
                                 <a href="edit.php?id=<?php echo $usuario['id']; ?>" class="btn btn-outline-dark btn-lg mt-3 btn-color me-3"><i class="fa fa-pencil"></i> </a>
                                 <!-- Corrigindo o atributo 'data-usuario-id' -->
-                                <a href="#" class="btn btn-outline-dark btn-lg mt-3 btn-color" data-bs-toggle="modal" data-bs-target="#delete-modal" data-id="<?php echo $usuario['id']; ?>" data-type="usuario">
+                                <a href="#" class="btn btn-outline-dark btn-lg mt-3 btn-color" data-bs-toggle="modal" data-bs-target="#delete-modal" data-id="<?php echo $usuario['id']; ?>" data-type="usuário">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             <?php endif; ?>
