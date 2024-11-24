@@ -1,17 +1,26 @@
 <?php
 include("functions.php");
-if (!isset($_SESSION)) session_start();
+// Inicia a sessão
+session_start();
+
+// Verifica se a variável de sessão 'user' está definida
 if (isset($_SESSION['user'])) {
-	if ($_SESSION['user'] != "admin") {
-		$_SESSION['message'] = "Você precisa ser administrador para acessar esse recurso!";
-		$_SESSION['type'] = "danger";
-		header("Location: " .  BASEURL . "index.php");
-	}
+    if ($_SESSION['user'] === "admin") {
+        $_SESSION['message'] = "Você pode acessar esse recurso!";
+        $_SESSION['type'] = "success";
+    } else {
+        $_SESSION['message'] = "Você não pode acessar esse recurso!";
+        $_SESSION['type'] = "danger";
+        header("Location: " . BASEURL . "index.php");
+        exit();
+    }
 } else {
-	$_SESSION['message'] = "Você precisa estar logado e ser administrador para acessar esse recurso!";
-	$_SESSION['type'] = "danger";
-	header("Location: " .  BASEURL . "index.php");
+    $_SESSION['message'] = "Você não pode acessar esse recurso!";
+    $_SESSION['type'] = "danger";
+    header("Location: " . BASEURL . "index.php");
+    exit(); // Certifique-se de que o código não continue após o redirecionamento
 }
+
 edit();
 include(HEADER_TEMPLATE);
 ?>
@@ -38,7 +47,7 @@ include(HEADER_TEMPLATE);
 			<label for="senha">
 				<h6>Senha</h6>
 			</label>
-			<input type="password" class="form-control" name="usuario[password]" value="">
+			<input type="password" class="form-control" name="usuario[pass]" value="">
 		</div>
 	</div>
 

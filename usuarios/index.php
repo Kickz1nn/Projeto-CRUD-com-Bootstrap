@@ -2,6 +2,27 @@
 include("functions.php");
 index();
 include(HEADER_TEMPLATE);
+
+// Inicia a sessão
+session_start();
+// Verifica se a variável de sessão 'user' está definida
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['role'] === "admin") {
+        $_SESSION['message'] = "Você pode acessar esse recurso!";
+        $_SESSION['type'] = "success";
+    } else {
+        $_SESSION['message'] = "Você não pode acessar esse recurso!";
+        $_SESSION['type'] = "danger";
+        header("Location: " . BASEURL . "index.php");
+        exit();
+    }
+} else {
+    $_SESSION['message'] = "Você não pode acessar esse recurso!";
+    $_SESSION['type'] = "danger";
+    header("Location: " . BASEURL . "index.php");
+    exit(); // Certifique-se de que o código não continue após o redirecionamento
+}
+
 ?>
 
 <header class="mt-2">

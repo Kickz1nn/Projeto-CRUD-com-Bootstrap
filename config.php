@@ -1,16 +1,16 @@
 <?php
 
     /** O nome do banco de dados*/
-    define("DB_NAME", "wda_crud");
+    define("DB_NAME", "if0_37679468_wda_crud");
 
     /** Usuário do banco de dados MySQL */
-    define("DB_USER", "root");
+    define("DB_USER", "if0_37679468");
 
     /** Senha do banco de dados MySQL */
-    define("DB_PASSWORD", "");
+    define("DB_PASSWORD", "CRxIgpNNvK");
 
     /** nome do host do MySQL */
-    define("DB_HOST", "localhost");
+    define("DB_HOST", "sql208.infinityfree.com");
 
     /** caminho absoluto para a pasta do sistema **/
     if (!defined("ABSPATH")) {
@@ -19,7 +19,7 @@
 
     /** caminho no server para o sistema **/
     if (!defined("BASEURL")) {
-        define("BASEURL", "/Projeto-CRUD-com-Bootstrap/");
+        define("BASEURL", "../");
     }
 
     /** caminho do arquivo de banco de dados **/

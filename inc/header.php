@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-xxl navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-xxl navbar-dark bg-dark fixed-top mb-3">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?php echo BASEURL; ?>">
             <i class="fa-solid fa-house-chimney"></i> CRUD PW
@@ -59,8 +59,8 @@
                         <i class="fa-solid fa-boxes-stacked"></i> Produtos
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="<?php echo BASEURL; ?>produtos/add.php"><i class="fa-solid fa-box"></i> Adicionar Produto</a></li>
-                        <li><a class="dropdown-item" href="<?php echo BASEURL; ?>produtos/"><i class="fa-solid fa-boxes-stacked"></i> Gerenciar Produtos</a></li>
+                        <li><a class="dropdown-item" href="<?php echo BASEURL; ?>clothes/add.php"><i class="fa-solid fa-box"></i> Adicionar Produto</a></li>
+                        <li><a class="dropdown-item" href="<?php echo BASEURL; ?>clothes/"><i class="fa-solid fa-boxes-stacked"></i> Gerenciar Produtos</a></li>
                     </ul>
                 </li>
                 <?php if (isset($_SESSION['user'])): // Verifica se está logado ?>

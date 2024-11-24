@@ -1,5 +1,23 @@
 <?php
 include("functions.php");
+session_start();
+
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['user'] === "admin") {
+        $_SESSION['message'] = "Você pode acessar esse recurso!";
+        $_SESSION['type'] = "success";
+    } else {
+        $_SESSION['message'] = "Você não pode acessar esse recurso!";
+        $_SESSION['type'] = "danger";
+        header("Location: " . BASEURL . "index.php");
+        exit();
+    }
+} else {
+    $_SESSION['message'] = "Você não pode acessar esse recurso!";
+    $_SESSION['type'] = "danger";
+    header("Location: " . BASEURL . "index.php");
+    exit(); // Certifique-se de que o código não continue após o redirecionamento
+}
 
 if (isset($_GET['id'])) {
     try {

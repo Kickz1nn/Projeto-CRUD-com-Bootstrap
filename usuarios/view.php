@@ -1,17 +1,26 @@
 <?php
 include("functions.php");
-if (!isset($_SESSION)) session_start();
+// Inicia a sessão
+session_start();
+
+// Verifica se a variável de sessão 'user' está definida
 if (isset($_SESSION['user'])) {
-	if ($_SESSION['user'] != "admin") {
-		$_SESSION['message'] = "Você precisa ser administrador para acessar esse recurso!";
-		$_SESSION['type'] = "danger";
-		header("Location: " .  BASEURL . "index.php");
-	}
-} else {
-	$_SESSION['message'] = "Você precisa estar logado e ser administrador para acessar esse recurso!";
-	$_SESSION['type'] = "danger";
-	header("Location: " .  BASEURL . "index.php");
+    if ($_SESSION['user'] === "admin") {
+        $_SESSION['message'] = "Você pode acessar esse recurso!";
+        $_SESSION['type'] = "success";
+    } else {
+        $_SESSION['message'] = "Você não pode acessar esse recurso!";
+        $_SESSION['type'] = "danger";
+        header("Location: " . BASEURL . "index.php");
+        exit(); // Certifique-se de que o código não continue após o redirecionamento
 }
+} else {
+    $_SESSION['message'] = "Você não pode acessar esse recurso!";
+    $_SESSION['type'] = "danger";
+    header("Location: " . BASEURL . "index.php");
+    exit(); // Certifique-se de que o código não continue após o redirecionamento
+}
+
 view($_GET['id']);
 include(HEADER_TEMPLATE);
 ?>
